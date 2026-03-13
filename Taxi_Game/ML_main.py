@@ -42,7 +42,6 @@ def is_crash():
     if hotel_rect.colliderect(player_rect):
         return True
 
-
     return False
 
 def draw_message(text, color):
@@ -66,12 +65,6 @@ hotel_positions = [
     (60, 300),
     (445, 300)
 ]
-# if (hotel_rect.x, hotel_rect.y) == (60, 250):
-#     image = pg.image.load("hotel.png")
-#     rotated_image = pg.transform.rotate(image, 90)
-
-
-
 
 hotel_rect.x, hotel_rect.y = random.choice(hotel_positions)
 
@@ -83,7 +76,6 @@ passenger_img = images_dict['passenger']
 passenger_rect = passenger_img.get_rect()
 (passenger_rect.x, passenger_rect.y) = random.choice(hotel_positions)
 passenger_rect.y += hotel_rect.height
-
 
 def apply_action(action):
     global player_view
@@ -111,12 +103,6 @@ def apply_action(action):
         player_rect.x = new_x
     if 0 < new_y < height - player_rect.height:
         player_rect.y = new_y
-
-
-
-
-#from collections import defaultdict
-# import numpy as np
 
 actions = [0, 1, 2, 3] # 0-right 1-left 2-up 3-bottom
 Q_table = defaultdict(lambda: [0, 0, 0, 0])
@@ -170,7 +156,6 @@ for episode in range(num_episodes):
 
 print(Q_table)
 draw_message("Навчання завершено", pg.Color('blue'))
-
 
 run = True
 while run:
