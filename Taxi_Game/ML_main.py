@@ -24,7 +24,14 @@ images_dict = {
 }
 
 def is_crash():
-    return hotel_rect.colliderect(player_rect)
+    for x in range(player_rect.x, player_rect.topright[0], 1):
+        for y in range(player_rect.y, player_rect.bottomleft[1], 1):
+            try:
+                if screen.get_at((x, y)) == (220, 215, 177) or screen.get_at((x, y)) == (155, 144, 122, 255) or screen.get_at((x, y)) == (216, 211, 175, 255) or screen.get_at((x, y)) == (166, 164, 139, 255) or screen.get_at((x, y)) == (149, 147, 135, 255) or screen.get_at((x, y)) == (65, 113, 26, 255) or screen.get_at((x, y)) == (104, 132, 69, 255):
+                    return True
+            except IndexError:
+                print("Назад в діапазон!!")
+                return True
 
 def draw_message(text, color):
     font = pg.font.SysFont(None, 36)
@@ -56,7 +63,7 @@ parking_rect = parking_img.get_rect()
 parking_rect.x = hotel_rect.x
 parking_rect.y = hotel_rect.y + hotel_rect.height
 
-# пасажир (НЕ в готелі)
+# пасажир
 passenger_img = images_dict['passenger']
 passenger_rect = passenger_img.get_rect()
 
